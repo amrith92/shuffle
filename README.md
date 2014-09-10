@@ -1,4 +1,3 @@
-shuffle
-=======
+## shuffle
 
-shuffle is a next-gen visual infinite audio track player
+Shuffle is a new age infinite playlist radio that plays tracks with creative audio visualizations ^_^
