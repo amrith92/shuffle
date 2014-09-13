@@ -26,11 +26,11 @@ function visualize() {
         drawVisual = window.requestAnimationFrame(draw);
         analyser.getByteTimeDomainData(dataArray);
 
-        canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+        canvasCtx.fillStyle = 'rgb(0, 0, 0)';
         canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
         canvasCtx.lineWidth = 2;
-        canvasCtx.strokeStyle = 'rgb(136, 136, 136)';
+        canvasCtx.strokeStyle = 'rgb(98, 255, 0)';
 
         canvasCtx.beginPath();
 

@@ -1,0 +1,14 @@
+{
+  "name": "pixastic",
+  "homepage": "https://github.com/jseidelin/pixastic",
+  "_release": "fa4b9283f0",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fa4b9283f0a57c677d0f6762933bdfe5b0714242"
+  },
+  "_source": "git://github.com/jseidelin/pixastic.git",
+  "_target": "*",
+  "_originalSource": "jseidelin/pixastic",
+  "_direct": true
+}

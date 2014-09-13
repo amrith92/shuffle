@@ -14,18 +14,18 @@
         <link rel="stylesheet" href="styles/screen.css">
         <!-- endbuild -->
     </head>
-    <body class="bg-gray6">
+    <body class="bg-black">
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
         <header>
             <a href="#" class="brand"></a>
-            <ul class="nav">
+            <!--<ul class="nav">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
-            </ul>
+            </ul>-->
         </header>
 
         {{{ body }}}
@@ -39,7 +39,8 @@
         <!-- endbuild -->
 
         <!-- build:js(assets) scripts/scripts.js -->
-        <script src="scripts/visualizer.js"></script>
+        <script src="bower_components/chroma-js/chroma.min.js"></script>
+        <script src="scripts/shuffle.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
