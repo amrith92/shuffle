@@ -24,6 +24,9 @@ var hbs;
 // For gzip compression
 app.use(express.compress());
 
+// For cookies - yum :D
+app.use(express.cookieParser('8b3cd0d6-99f0-4702-959c-e18355b2582a'));
+
 /*
  * Config for Production and Development
  */
@@ -71,7 +74,7 @@ app.get('/', function(request, response, next) {
 
 // Shuffle
 app.get('/shuffle', function (request, response) {
-   shuffler.addClient(request, response);
+    shuffler.addClient(request, response);
 });
 
 // Shuffler track SSE

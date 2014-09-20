@@ -2,6 +2,7 @@
 
 var icecast = require('icecast'),
     lame = require('lame'),
+    uuid = require('node-uuid'),
     _ = require('underscore')._;
 
 function Shuffler(app, library) {
@@ -81,8 +82,14 @@ Shuffler.prototype.getSseClient = function (ip) {
 
 Shuffler.prototype.addSseClient = function (request, response) {
     var self = this,
-        ip = request.connection.remoteAddress,
+        ip = null,
         headers = { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive' };
+    
+    if (request.cookies.sseid) {
+        ip = request.cookies.sseid;
+    } else {
+        response.cookie('sseid', uuid.v4(), { maxAge: 6000, httpOnly: true });
+    }
 
     if (!response.headers) {
         response.set(headers);
@@ -100,8 +107,14 @@ Shuffler.prototype.addSseClient = function (request, response) {
 
 Shuffler.prototype.addClient = function (request, response) {
     var self = this,
-        ip = request.connection.remoteAddress,
+        ip = null,
         headers = { 'Content-Type': 'audio/mpeg', 'Connection': 'close', 'Transfer-Encoding': 'identity', 'Cache-Control': 'no-cache' };
+
+    if (request.cookies.clientid) {
+        ip = request.cookies.clientid;
+    } else {
+        response.cookie('clientid', uuid.v4(), { maxAge: 6000, httpOnly: true });
+    }
 
     if (!response.headers) {
         response.set(headers);
