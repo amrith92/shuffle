@@ -8,6 +8,14 @@ var app = express();
 var port = 3000;
 
 /*
+ * shuffle specific dependencies
+ */
+var Library = require('./assets/scripts/lib/library'),
+    Shuffler = require('./assets/scripts/lib/shuffler'),
+    library = new Library(),
+    shuffler = new Shuffler(app, library);
+
+/*
  * Use Handlebars for templating
  */
 var exphbs = require('express3-handlebars');
@@ -61,6 +69,15 @@ app.get('/', function(request, response, next) {
     response.render('index');
 });
 
+// Shuffle
+app.get('/shuffle', function (request, response) {
+   shuffler.addClient(request, response);
+});
+
+// Shuffler track SSE
+app.get('/events', function (request, response) {
+    shuffler.addSseClient(request, response);
+});
 
 /*
  * Start it up

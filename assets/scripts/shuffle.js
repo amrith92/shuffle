@@ -1,6 +1,9 @@
 'use strict';
 
+/* global chroma */
+
 var AudioContext = (window.AudioContext || window.webkitAudioContext);
+var EventSource = (window.EventSource || null);
 
 var Shuffle = {
     context: null,
@@ -49,7 +52,7 @@ Shuffle.initPresets = function () {
         var canvas = self.canvas;
         var ctx = self.canvasCtx;
 
-        var gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        var gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
         gradient.addColorStop(1, '#000000');
         gradient.addColorStop(0.75, '#ff0000');
         gradient.addColorStop(0.25, '#ffff00');
@@ -67,7 +70,7 @@ Shuffle.initPresets = function () {
 
         for (var i = 0, term = array.length; i < term; ++i) {
             var value = array[i];
-            ctx.fillRect(i * 5, 325 - value, 3, 325);
+            ctx.fillRect(i * 6, canvas.height - 25 - value, 3, canvas.height - 25);
         }
     });
 
@@ -86,7 +89,7 @@ Shuffle.initPresets = function () {
         tempCanvas.width = canvas.width;
         tempCanvas.height = canvas.height;
 
-        var hot = chroma.scale(['#000000', '#ff0000', '#ffff00', '#ffffff']).out('hex').domain([0, 300]);
+        var hot = chroma.scale(['#000000', '#ff0000', '#ffff00', '#ffffff']).out('hex').domain([0, canvas.height - 25]);
 
         var array = new Uint8Array(analyser.frequencyBinCount);
         analyser.getByteFrequencyData(array);
@@ -104,6 +107,7 @@ Shuffle.initPresets = function () {
         ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
         ctx.setTransform(1, 0, 0, 1, 0, 0);
     });
+    //this.presetIdx = 1;
 };
 
 Shuffle.start = function (options) {
@@ -122,14 +126,37 @@ Shuffle.start = function (options) {
 
     this.analyser = this.context.createAnalyser();
     this.canvas = document.getElementById(options.canvas);
+    this.canvas.width = options.width || this.canvas.width;
+    this.canvas.height = options.height || this.canvas.height;
+
     this.canvasCtx = this.canvas.getContext('2d');
+    this.trackDisplay = document.getElementById(options.trackDisplay);
 
     this.initialized = true;
 
-    this.loadSound('/audio/08 - Neon Tiger.mp3');
+    this.loadSound('/shuffle');
+
+    // Set up SSE
+    if (!EventSource) {
+        return;
+    }
+
+    this.source = new EventSource('/events');
+    this.source.addEventListener('message', function (e) {
+        self.trackDisplay.innerHTML = e.data;
+        console.log(e.data);
+    });
+    this.source.addEventListener('error', function (e) {
+        if (e.readyState === EventSource.CLOSED) {
+            console.log('SSE channel closed.');
+        }
+    });
 };
 
 // Start shuffle :D
 Shuffle.start({
-    canvas: 'visualization'
+    canvas: 'visualization',
+    width: window.innerWidth - 20,
+    height: (window.innerHeight > 500 ? 500 : window.innerHeight - 20),
+    trackDisplay: 'track-display'
 });

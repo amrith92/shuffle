@@ -2,6 +2,27 @@
 /*------------------------------------*\
     SCREEN.CSS
 \*------------------------------------*/
+/* line 6, sass/screen.scss */
+#track-display-holder {
+  position: absolute;
+  margin-top: 2em;
+  width: 100%;
+}
+
+/* line 12, sass/screen.scss */
+#track-display {
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-shadow: 1px 2px 3px rgba(80, 80, 80, 0.8);
+  font-size: 12px;
+  padding: 14px 20px;
+  line-height: 0.88em;
+  margin: 0 auto;
+  max-width: 40%;
+  text-align: center;
+}
+
 /**
  * Setup
  */
@@ -3981,11 +4002,11 @@ html {
 /*------------------------------------*\
     $LINKS
 \*------------------------------------*/
-/* line 86, sass/ui/_typography.scss */
+/* line 83, sass/ui/_typography.scss */
 a {
   color: #d8d8d8;
 }
-/* line 90, sass/ui/_typography.scss */
+/* line 87, sass/ui/_typography.scss */
 a:hover {
   color: #d70014;
 }
@@ -3993,29 +4014,29 @@ a:hover {
 /*------------------------------------*\
     $OTHER
 \*------------------------------------*/
-/* line 101, sass/ui/_typography.scss */
+/* line 98, sass/ui/_typography.scss */
 strong,
 .bold {
   font-weight: bold;
 }
 
-/* line 104, sass/ui/_typography.scss */
+/* line 101, sass/ui/_typography.scss */
 em {
   font-style: italic;
 }
 
-/* line 106, sass/ui/_typography.scss */
+/* line 103, sass/ui/_typography.scss */
 .no-underline {
   text-decoration: none;
 }
 
-/* line 108, sass/ui/_typography.scss */
+/* line 105, sass/ui/_typography.scss */
 ::selection {
   background: #d70014;
   color: white;
 }
 
-/* line 112, sass/ui/_typography.scss */
+/* line 109, sass/ui/_typography.scss */
 ::-moz-selection {
   background: #d70014;
   color: white;
@@ -4224,30 +4245,45 @@ body {
   color: white;
 }
 
+/* line 104, sass/ui/_color.scss */
+.bg-twinkle {
+  background: black url("../images/twinkle_twinkle.png") repeat;
+}
+
+/* line 108, sass/ui/_color.scss */
+.bg-oliva {
+  background: #3c3c3c url("../images/wild_oliva.png") repeat;
+}
+
+/* line 112, sass/ui/_color.scss */
+.bg-linen {
+  background: black url("../images/stressed_linen.png") repeat;
+}
+
 /*------------------------------------*\
     $BORDERS
 \*------------------------------------*/
-/* line 112, sass/ui/_color.scss */
+/* line 124, sass/ui/_color.scss */
 .border-color1 {
   border-color: #d70014;
 }
 
-/* line 113, sass/ui/_color.scss */
+/* line 125, sass/ui/_color.scss */
 .border-color2 {
   border-color: #2f7dc4;
 }
 
-/* line 114, sass/ui/_color.scss */
+/* line 126, sass/ui/_color.scss */
 .border-color3 {
   border-color: #6cba16;
 }
 
-/* line 115, sass/ui/_color.scss */
+/* line 127, sass/ui/_color.scss */
 .border-color4 {
   border-color: #ffa501;
 }
 
-/* line 117, sass/ui/_color.scss */
+/* line 129, sass/ui/_color.scss */
 .border-none {
   border: none !important;
 }
@@ -4261,6 +4297,16 @@ body {
 /*------------------------------------*\
     $LOGO
 \*------------------------------------*/
+/* line 16, sass/ui/_header.scss */
+header {
+  margin-top: 6px;
+}
+/* line 18, sass/ui/_header.scss */
+header span {
+  position: absolute;
+  top: 22px;
+}
+
 /*------------------------------------*\
     $CONTENTS
 \*------------------------------------*/

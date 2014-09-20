@@ -3,6 +3,24 @@
     SCREEN.CSS
 \*------------------------------------*/
 
+#track-display-holder {
+    position: absolute;
+    margin-top: 2em;
+    width: 100%;
+}
+
+#track-display {
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-shadow: 1px 2px 3px rgba(80, 80, 80, 0.8);
+    font-size: 12px;
+    padding: 14px 20px;
+    line-height: 0.88em;
+    margin: 0 auto;
+    max-width: 40%;
+    text-align: center;
+}
 
 
 
