@@ -114,7 +114,9 @@ Shuffle.initPresets = function () {
 
 Shuffle.start = function (options) {
     this.context = new AudioContext();
-    this.javascriptNode = this.context.createScriptProcessor(2048, 1, 1);
+
+    var jsNodeCreator = this.context.createScriptProcessor || this.context.createJavascriptNode;
+    this.javascriptNode = jsNodeCreator(2048, 1, 1);
     this.javascriptNode.connect(this.context.destination);
 
     this.initPresets();
