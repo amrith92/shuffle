@@ -39,6 +39,11 @@ Shuffler.prototype.shuffle = function () {
     self.library.next();
     //console.log('current: ' + self.library.current());
     icecast.get(self.library.current(), function (res) {
+        if (self.clients.length === 0) {
+            res.end();
+            self.shuffle();
+        }
+
         res.on('data', function (data) {
             self.decoder.write(data);
         });
