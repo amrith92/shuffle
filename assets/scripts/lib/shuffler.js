@@ -37,7 +37,7 @@ Shuffler.prototype.shuffle = function () {
 
     self.changeSourceCounter = 0;
     self.library.next();
-    console.log('current: ' + self.library.current());
+    //console.log('current: ' + self.library.current());
     icecast.get(self.library.current(), function (res) {
         res.on('data', function (data) {
             self.decoder.write(data);
@@ -81,6 +81,7 @@ Shuffler.prototype.addSseClient = function (request, response) {
 
     if (!response.headers) {
         response.set(headers);
+        self.publishTrackInfo();
     }
 
     if (!self.getSseClient(ip)) {
@@ -95,7 +96,7 @@ Shuffler.prototype.addSseClient = function (request, response) {
 Shuffler.prototype.addClient = function (request, response) {
     var self = this,
         ip = request.connection.remoteAddress,
-        headers = { 'Content-Type': 'audio/mpeg', 'Connection': 'close', 'Transfer-Encoding': 'identity' };
+        headers = { 'Content-Type': 'audio/mpeg', 'Connection': 'close', 'Transfer-Encoding': 'identity', 'Cache-Control': 'no-cache' };
 
     if (!response.headers) {
         response.set(headers);
@@ -124,6 +125,7 @@ Shuffler.prototype.removeSseClient = function (ip) {
 Shuffler.prototype.publishTrackInfo = function () {
     var self = this;
     
+    //console.log('Writing metadata: ' + self.track);
     self.sseClients.forEach(function (client) {
         client.response.send('data: ' + self.track + '\n\n');
     });

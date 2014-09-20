@@ -3,13 +3,18 @@
     SCREEN.CSS
 \*------------------------------------*/
 /* line 6, sass/screen.scss */
+.bg-twinkle {
+  background: black url("../images/twinkle_twinkle.png") repeat;
+}
+
+/* line 10, sass/screen.scss */
 #track-display-holder {
   position: absolute;
   margin-top: 2em;
   width: 100%;
 }
 
-/* line 12, sass/screen.scss */
+/* line 16, sass/screen.scss */
 #track-display {
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.6);
@@ -4245,17 +4250,12 @@ body {
   color: white;
 }
 
-/* line 104, sass/ui/_color.scss */
-.bg-twinkle {
-  background: black url("../images/twinkle_twinkle.png") repeat;
-}
-
-/* line 108, sass/ui/_color.scss */
+/* line 105, sass/ui/_color.scss */
 .bg-oliva {
   background: #3c3c3c url("../images/wild_oliva.png") repeat;
 }
 
-/* line 112, sass/ui/_color.scss */
+/* line 109, sass/ui/_color.scss */
 .bg-linen {
   background: black url("../images/stressed_linen.png") repeat;
 }
@@ -4263,27 +4263,27 @@ body {
 /*------------------------------------*\
     $BORDERS
 \*------------------------------------*/
-/* line 124, sass/ui/_color.scss */
+/* line 121, sass/ui/_color.scss */
 .border-color1 {
   border-color: #d70014;
 }
 
-/* line 125, sass/ui/_color.scss */
+/* line 122, sass/ui/_color.scss */
 .border-color2 {
   border-color: #2f7dc4;
 }
 
-/* line 126, sass/ui/_color.scss */
+/* line 123, sass/ui/_color.scss */
 .border-color3 {
   border-color: #6cba16;
 }
 
-/* line 127, sass/ui/_color.scss */
+/* line 124, sass/ui/_color.scss */
 .border-color4 {
   border-color: #ffa501;
 }
 
-/* line 129, sass/ui/_color.scss */
+/* line 126, sass/ui/_color.scss */
 .border-none {
   border: none !important;
 }

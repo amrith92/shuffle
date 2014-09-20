@@ -19,12 +19,14 @@ var Shuffle = {
 };
 
 Shuffle.prepareBuffer = function () {
-    this.source = this.context.createBufferSource();
-    this.source.buffer = this.buffer;
-    this.source.connect(this.analyser);
-    this.analyser.connect(this.javascriptNode);
-    this.source.connect(this.context.destination);
-    this.source.start(0);
+    var audio = document.getElementById('player'),
+        self = this;
+
+    audio.play();
+    self.source = self.context.createMediaElementSource(audio);
+    self.source.connect(self.analyser);
+    self.analyser.connect(self.javascriptNode);
+    self.source.connect(self.context.destination);
 };
 
 Shuffle.loadSound = function (url) {
@@ -134,7 +136,8 @@ Shuffle.start = function (options) {
 
     this.initialized = true;
 
-    this.loadSound('/shuffle');
+    //this.loadSound('/shuffle');
+    this.prepareBuffer();
 
     // Set up SSE
     if (!EventSource) {
