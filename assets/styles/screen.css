@@ -4405,6 +4405,11 @@ input[type=password]:focus {
 /**
  * FOOTER
 */
+/* line 8, sass/ui/_footer.scss */
+footer {
+  text-align: center;
+}
+
 /*------------------------------------*\
     $FOOTER
 \*------------------------------------*/
