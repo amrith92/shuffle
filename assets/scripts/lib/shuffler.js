@@ -38,12 +38,12 @@ Shuffler.prototype.shuffle = function () {
 
     self.changeSourceCounter = 0;
     self.library.next();
-    //console.log('current: ' + self.library.current());
+    console.log('current: ' + self.library.current());
     icecast.get(self.library.current(), function (res) {
-        if (self.clients.length === 0) {
+        /*if (self.clients.length === 0) {
             res.end();
             self.shuffle();
-        }
+        }*/
 
         res.on('data', function (data) {
             self.decoder.write(data);
@@ -51,6 +51,7 @@ Shuffler.prototype.shuffle = function () {
 
         res.on('metadata', function (metadata) {
             if (self.changeSourceCounter === 5) {
+                console.log('Switching streams...');
                 res.end();
                 self.shuffle();
             } else {
@@ -143,7 +144,7 @@ Shuffler.prototype.removeSseClient = function (ip) {
 Shuffler.prototype.publishTrackInfo = function () {
     var self = this;
     
-    //console.log('Writing metadata: ' + self.track);
+    console.log('Writing track info: ' + self.track);
     self.sseClients.forEach(function (client) {
         client.response.send('data: ' + self.track + '\n\n');
     });
